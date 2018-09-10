@@ -44,7 +44,6 @@ function getSwap(arr) {
             if (i > halfLength - 1) {
                 var halfOfHalf = halfLength / 2;
                 if (i < halfOfHalf + halfLength - 1) {
-                    // console.log(`index${i} element:${arr[i]}`);
                     var element = arr[arr.length - i + halfLength - 1];
                     arr[arr.length - i + halfLength - 1] = arr[i];
                     arr[i] = element;
@@ -54,8 +53,7 @@ function getSwap(arr) {
     }
 
     return arr;
-}
-;
+};
 console.log(array);
 
 console.log(getSwap(array));
