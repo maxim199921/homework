@@ -1,32 +1,28 @@
 'use strict';
 
-
-let surname = prompt("Ваша фамилия?", "");
-
-if (surname == "") {
-    for (;surname == "";) {surname = prompt("введите корректно Вашу фамилию!", "")};
-};
+let surname;
+do {
+    surname = prompt("Ваша фамилия?", "")
+} while (surname === "" || surname === null);
 
 
-let name = prompt("Ваше имя?", "");
-
-if (name == "") {
-    for (;name == "";) {name = prompt("введите корректно Ваше имя!", "")};
-};
-
-
-let patronymic = prompt("Ваше отчество?", "");
-
-if (patronymic == "") {
-    for (;patronymic == "";) {patronymic = prompt("введите корректно Ваше отчество!", "")};
-};
+let name1;
+do {
+    name1 = prompt("Ваше имя?", "")
+} while (name1 === "" || name1 === null);
 
 
-let age = prompt("Ваш возраст?", 0);
+let patronymic;
+do {
+    patronymic = prompt("Ваше отчество?", "")
+} while (patronymic === "" || patronymic === null);
 
-if (age == 0 || age != +age) {
-    for (;age == 0 || age != +age;) {age = prompt("введите корректно Ваш возраст!", "")};
-};
+
+let age;
+do {
+    age = prompt("Ваш возраст?", 0);
+} while (age != +age || age == 0 || age === null);
+
 
 const ageDays = age*365;
 
@@ -43,66 +39,69 @@ switch ( floorget ) {
         break;
 }
 
+const pension = (age > 60) ? "да" : "нет";
 
-let pension = confirm("Вы на пенсии?");
-
-switch ( pension ) {
-    case true:
-        pension = "да";
-        break;
-    case false:
-        pension = "нет";
-        break;
-}
-
-const form = `Ваше ФИО: ${surname} ${name} ${patronymic}
+const form = `Ваше ФИО: ${surname} ${name1} ${patronymic}
 Ваш возраст: ${age} лет
 Ваш возраст в днях: ${ageDays} дней
 Через 20 лет вам будет: ${ageAfter}
 Ваш пол: ${floorget}
 Вы на пенсии: ${pension}`;
 
-alert(form);
+console.log(form);
 
-/*alert('Ваше ФИО:'+ " " + surname + " " + name + " " + patronymic + "\n"
+/*
+'use strict';
+
+var surname;
+do {
+  surname = prompt("Ваша фамилия?", "")
+} while (surname === "" || surname === null);
+
+
+var name1;
+do {
+  name1 = prompt("Ваше имя?", "")
+} while (name1 === "" || name1 === null);
+
+
+var patronymic;
+
+do {
+  patronymic = prompt("Ваше отчество?", "")
+} while (patronymic === "" || patronymic === null);
+
+
+var age;
+
+do {
+  age = prompt("Ваш возраст?", 0);
+} while (age != +age || age == 0 || age === null);
+
+
+var ageDays = age*365;
+
+var ageAfter = (Number(age) + 20);
+
+var floorget = confirm("Ваш пол мужской?");
+
+switch ( floorget ) {
+    case true:
+        floorget = "мужской";
+        break;
+    case false:
+        floorget = "женский";
+        break;
+}
+
+var pension = (age > 60) ? "да" : "нет";
+
+console.log("Ваше ФИО:" + " " + surname + " " + name1 + " " + patronymic + "\n"
     + "Ваш возраст:" + " " + age + " " + "лет" + "\n"
     + "Ваш возраст в днях:" + " " + ageDays + " " + "дней" + "\n"
-    + "Через 20 лет вам будет:" + " " + ageAfter + " " + "года" + "\n"
+    + "Через 20 лет вам будет:" + " " + ageAfter + " " + "\n"
     + "Ваш пол:" + " " + floorget + "\n"
     + "Вы на пенсии:" + " " + pension);
 
 
-
-
-
-
-
-
-
-/*'use strict';
-
-var x = 'ваше имя - максим';
-var y = 'ваша фамилия - чупилин';
-var z = 'ваше отчество - сергеевич';
-var f = `${x}
-${y}
-${z}`;
-
-
-console.log(f);
-
-*/
-
-/*
-function test() {
-
-    var x = Math.round((0.1 + 0.5) * 10) / 10;
-    const exp = 125e5;
-
-    console.log (x);
-    console.log (Math.pow(2, 4));
-    console.log (exp);
-}
-
-test();
-*/
+ */
