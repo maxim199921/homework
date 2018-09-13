@@ -49,9 +49,10 @@ const maks = new Boy("maks");
 const lera = new Girl(("lera"));
 const dasha = new Girl("dasha");
 
-ivan.getMarry(maks);
-maks.getMarry(lera);
-maks.getMarry(dasha);
-dasha.getMarry(ivan);
-dasha.getMarry(lera);
+ivan.getMarry(maks);//false
+maks.getMarry(lera);//true
+maks.getMarry(dasha);//true
+dasha.getMarry(ivan);//true
+dasha.getMarry(lera);//false
+
 

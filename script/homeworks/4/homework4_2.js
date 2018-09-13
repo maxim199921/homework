@@ -63,8 +63,8 @@ const maks = new Boy("maks");
 const lera = new Girl(("lera"));
 const dasha = new Girl("dasha");
 
-console.log(ivan.getMarry(maks));
-console.log(ivan.getMarry(lera));
-console.log(ivan.getMarry(dasha));
-console.log(dasha.getMarry(maks));
-console.log(dasha.getMarry(lera));
+console.log(ivan.getMarry(maks));//false
+console.log(ivan.getMarry(lera));//true
+console.log(ivan.getMarry(dasha));//true
+console.log(dasha.getMarry(maks));//true
+console.log(dasha.getMarry(lera));//false
