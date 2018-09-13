@@ -1,5 +1,31 @@
-class Boy { // Базовый класс
+class Person {
+    constructor(name) {
+        this.name = name;
+        this.age = 0;
+        this.friends = [];
+    }
+    grow(age) {
+        this.age = age;
+    }
+    setFriend(other) {
+        if (this.friends.indexOf(other) === -1) {
+            this.friends.push(other);
+            other.setFriend(this);
+        }
+    }
+    hasFriend(other) {
+        return this.friends.includes(other);
+    }
+
+    sayHello() {
+        console.log(
+            `hi, my name's ${this.name}, ${this.age} years, ${this.friends}`);
+    }
+}
+
+class Boy extends Person { // Базовый класс
     constructor(man) { // Конструктор
+        super();
         this.man = man; // Создание и инициализация поля
     }
     getMarry (other){
@@ -7,8 +33,9 @@ class Boy { // Базовый класс
     }
 }
 
-class Girl { // Базовый класс
+class Girl extends Person { // Базовый класс
     constructor(woman) { // Конструктор
+        super()
         this.man = woman; // Создание и инициализация поля
     }
     getMarry (other){
