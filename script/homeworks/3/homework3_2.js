@@ -1,6 +1,8 @@
-var array = [];
+let array = [];
 
-for (var i = 0, t = 10; i < t; i++) {
+let t = Math.round(Math.random() * 20);
+
+for (i = 0, t; i < t; i++) {
     array.push(Math.round(Math.random() * 10));
 }
 
