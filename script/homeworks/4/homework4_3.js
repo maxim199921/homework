@@ -24,9 +24,9 @@ class Person {
 }
 
 class Boy extends Person { // Базовый класс
-    constructor(man) { // Конструктор
-        super();
-        this.man = man; // Создание и инициализация поля
+    constructor(name) { // Конструктор
+        super(name);
+        this.man = name; // Создание и инициализация поля
     }
     getMarry (other){
         console.log(other instanceof Girl);
@@ -34,9 +34,9 @@ class Boy extends Person { // Базовый класс
 }
 
 class Girl extends Person { // Базовый класс
-    constructor(woman) { // Конструктор
-        super()
-        this.man = woman; // Создание и инициализация поля
+    constructor(name) { // Конструктор
+        super(name)
+        this.woman = name; // Создание и инициализация поля
     }
     getMarry (other){
         console.log(other instanceof Boy);
