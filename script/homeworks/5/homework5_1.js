@@ -25,7 +25,7 @@ class HashStorage {
         if (resultObj) {
             alert(` напиток: ${resultObj.key} \n алкогольный: ${resultObj.value.isAlcoholik} \n рецепт приготовления: ${resultObj.value.recept}`);
         } else {
-            alert('нет');
+            alert('нет такого напитка');
         }
         // let resultArray = this._hash.filter(function (element) {
         //     return element.key === key;
