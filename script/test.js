@@ -1,16 +1,58 @@
-var arr = [];
-var max = 7;
-var randomnumber;
+class MaksNubas {
+    constructor() {
+    };
 
-while (arr.length < max) {
-    randomnumber = Math.floor(Math.random() * 10);
-    arr.push(randomnumber);
+    sayHello() {
+        console.log(`hi im good boy`);
+    }
 }
 
-function getNewArraySwap(arr) {
-    const left = Math.floor(a.length / 2);
-    return [ ...arr.slice(left+1) , arr[left], ...arr.slice(0, left) ];
+let maksGood = new MaksNubas();
+
+class MaksLearnsJS extends MaksNubas {
+    constructor(arr){
+        super();
+        this._arr = arr;
+    }
+
+    getSwap() {
+        let element;
+        let arr = this._arr;
+        let halfLength = Math.round(arr.length / 2);
+
+        if (arr.length % 2 === 0) {
+            for (i = 0; i < halfLength; i++) {
+                element = arr[i + halfLength];
+                arr[i + halfLength] = arr[i];
+                arr[i] = element;
+            }
+        } else {
+            for (i = 0; i < halfLength - 1; i++) {
+                element = arr[i + halfLength];
+                arr[i + halfLength] = arr[i];
+                arr[i] = element;
+            }
+        }
+
+        return arr;
+    };
+
 }
 
-console.log(arr);
-console.log(getNewArraySwap(arr));
+maksGood.sayHello();
+
+let array = [];
+let t = Math.round(Math.random() * 20);
+
+
+for (i = 0, t ; i < t; i++) {
+    array.push(Math.round(Math.random() * 10));
+}
+
+const maksimka = new MaksLearnsJS(array);
+
+maksimka.sayHello();
+console.log(array);
+// maksimka.getSwap().forEach(element => console.log(element));
+console.log(maksimka.getSwap());
+
