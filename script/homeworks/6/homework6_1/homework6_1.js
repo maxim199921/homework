@@ -1,13 +1,9 @@
-function filtr() {
-    let message = prompt("Введите сообщение", "");
-    i = message.match(/[аоэиуыеёюяeyuioa]/g);
-    i = i.length;
-    // i = message.split(/[аоэиуыеёюяeyuioa]/g);
-    // i = i.length - 1;
-    return i;
+function filtr(message) {
+    return message.match(/[аоэиуыеёюяeyuioa]/g).length;
+    // return message.split(/[аоэиуыеёюяeyuioa]/g).length - 1;
 }
 
-let v = filtr();
+let v = filtr(prompt("Введите сообщение", ""));
 let message = `В вашем сообщении : ${v} гласных`;
 console.log(message);
 alert(message);
