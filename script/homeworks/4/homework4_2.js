@@ -49,7 +49,7 @@ class Girl extends Person { // Базовый класс
         if (other instanceof Boy !== false) {
             return true;
         } else {
-            return false
+            return false;
         }
     }
 }
