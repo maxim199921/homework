@@ -14,7 +14,7 @@ function mood() {
     for (var i = 0; i < colors.length; i++) {
         var n=randomDiap(0, colors.length - 1);
         var colorName = colors[n];
-        obj[colorName] = colors;
+        obj[colorName] = colorName;
     }
 
     return Object.keys(obj);
