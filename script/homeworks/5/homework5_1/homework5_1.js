@@ -6,15 +6,15 @@ class HashStorage {
     }
 
     addValue(key, value, receipt) {
-        key = prompt("название", "");
-        value = prompt("алкогольный?", "");
-        receipt = prompt("Рецепт", "");
+        // key = prompt("название", "");
+        // value = prompt("алкогольный?", "");
+        // receipt = prompt("Рецепт", "");
 
         this._hash.push({key: key, value: {isAlcoholik: value, recept: receipt}});
     }
 
     getValue(key) {
-        key = prompt("Введите название напитка", "");
+        // key = prompt("Введите название напитка", "");
 
         let resultObj = this._hash.reduce(function (acc, element) {
            if (element.key === key) {
@@ -52,7 +52,7 @@ class HashStorage {
     }
 
     deleteValue(key) {
-        key = prompt("Введите название напитка который вы хотите удалить", "");
+        // key = prompt("Введите название напитка который вы хотите удалить", "");
 
         for (let i = 0; i < this._hash.length; i++) {
             if (this._hash[i].key === key) {
@@ -64,7 +64,7 @@ class HashStorage {
     }
 
     getKeys() {
-        let keys = [];
+        let keys = [] /*Object.keys(this._hash) - ТАК КОРОЧЕ!!!*/;
 
         for (let element of this._hash) {
             keys.push(element.key);

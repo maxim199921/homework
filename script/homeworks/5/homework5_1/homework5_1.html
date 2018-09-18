@@ -5,10 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-<input type=button value='Добавить значение!' onclick="drinkStorage.addValue()">
-<input type=button value='Получить информацию о напитке!' onclick="drinkStorage.getValue()">
-<input type=button value='Удаление информации о напитке!' onclick="drinkStorage.deleteValue()">
-<input type=button value='Перечень всех напитков!' onclick="drinkStorage.getKeys()">
+<input type = button value = 'Добавить значение!' onclick="drinkStorage.addValue(prompt('название', ''), prompt('алкогольный?',''), prompt('Рецепт',''))">
+<input type = button value = 'Получить информацию о напитке!' onclick="drinkStorage.getValue(prompt('Введите название напитка', ''))">
+<input type = button value = 'Удаление информации о напитке!' onclick="drinkStorage.deleteValue(prompt('Введите название напитка который вы хотите удалить', ''))">
+<input type = button value = 'Перечень всех напитков!' onclick="drinkStorage.getKeys()">
 
 <script src="homework5_1.js"></script>
 </body>
