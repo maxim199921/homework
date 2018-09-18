@@ -27,7 +27,6 @@ Person.prototypesayHello = function () {
 
 function Boy(name) {
     this.superConstructor.call(this, name);
-    this.man = name;
 }
 
 var f = function () {
@@ -42,9 +41,7 @@ Boy.prototype.superConstructor = Person;
 Boy.prototype.getMarry = function (other) {
     if (other instanceof Girl !== false) {
         return true;
-    }
-
-    if (other instanceof Girl !== true) {
+    } else {
         return false;
     }
 };
@@ -52,7 +49,6 @@ Boy.prototype.getMarry = function (other) {
 
 function Girl(name) {
     this.superConstructor.call(this, name);
-    this.woman = name;
 }
 
 var f = function () {
@@ -67,9 +63,7 @@ Girl.prototype.superConstructor = Person;
 Girl.prototype.getMarry = function (other) {
     if (other instanceof Boy !== false) {
         return true;
-    }
-
-    if (other instanceof Boy !== true) {
+    } else {
         return false;
     }
 };

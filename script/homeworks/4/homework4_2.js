@@ -4,15 +4,18 @@ class Person {
         this.age = 0;
         this.friends = [];
     }
+
     grow(age) {
         this.age = age;
     }
+
     setFriend(other) {
         if (this.friends.indexOf(other) === -1) {
             this.friends.push(other);
             other.setFriend(this);
         }
     }
+
     hasFriend(other) {
         return this.friends.includes(other);
     }
@@ -25,16 +28,13 @@ class Person {
 
 class Boy extends Person { // Базовый класс
     constructor(name) { // Конструктор
-        super(name);
-        this.man = name; // Создание и инициализация поля
+        super(name); // Создание и инициализация поля
     }
 
     getMarry(other) {
         if (other instanceof Girl !== false) {
             return true;
-        }
-
-        if (other instanceof Girl !== true) {
+        } else {
             return false;
         }
     }
@@ -42,17 +42,14 @@ class Boy extends Person { // Базовый класс
 
 class Girl extends Person { // Базовый класс
     constructor(name) { // Конструктор
-        super(name);
-        this.woman = name; // Создание и инициализация поля
+        super(name); // Создание и инициализация поля
     }
 
     getMarry(other) {
         if (other instanceof Boy !== false) {
             return true;
-        }
-
-        if (other instanceof Boy !== true) {
-            return false;
+        } else {
+            return false
         }
     }
 }
