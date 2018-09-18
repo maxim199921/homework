@@ -7,17 +7,17 @@ function randomDiap(n,m) {
 function mood() {
     var colors=['красный', 'оранжевый', 'жёлтый', 'зелёный', 'голубой', 'синий', 'фиолетовый', 'новый цвет' ];
 
-    var obj = {};
+    var hash = {};
 
     console.log( 'цветов: ' + colors.length );
 
     for (var i = 0; i < colors.length; i++) {
         var n=randomDiap(0, colors.length - 1);
         var colorName = colors[n];
-        obj[colorName] = colorName;
+        hash[colorName] = colorName;
     }
 
-    return Object.keys(obj);
+    return Object.keys(hash);
 
     // for ( var i=0; i<=colors.length; i++ ) {
     //     var n=randomDiap(0,colors.length - 1);
