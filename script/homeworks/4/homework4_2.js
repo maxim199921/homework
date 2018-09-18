@@ -32,7 +32,7 @@ class Boy extends Person { // Базовый класс
     }
 
     getMarry(other) {
-        if (other instanceof Girl !== false) {
+        if (other instanceof Girl) {
             return true;
         } else {
             return false;
@@ -46,7 +46,7 @@ class Girl extends Person { // Базовый класс
     }
 
     getMarry(other) {
-        if (other instanceof Boy !== false) {
+        if (other instanceof Boy) {
             return true;
         } else {
             return false;

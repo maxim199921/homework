@@ -39,7 +39,7 @@ Boy.prototype.superConstructor = Person;
 
 
 Boy.prototype.getMarry = function (other) {
-    if (other instanceof Girl !== false) {
+    if (other instanceof Girl) {
         return true;
     } else {
         return false;
@@ -61,7 +61,7 @@ Girl.prototype.superConstructor = Person;
 
 
 Girl.prototype.getMarry = function (other) {
-    if (other instanceof Boy !== false) {
+    if (other instanceof Boy) {
         return true;
     } else {
         return false;
