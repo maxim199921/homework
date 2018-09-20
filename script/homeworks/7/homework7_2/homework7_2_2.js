@@ -1,12 +1,11 @@
 let arr = prompt("Введите сообщение", "").split('');
-let counter = 0;
 let arrOfVowels = ['а','о','э','и','у','ы','е','ё','ю','я'];
 
-arr.forEach((el) => {
+let numberOfVowels = arr.reduce((previousValue, el) => {
     if (arrOfVowels.indexOf(el) !== -1) {
-        console.log(el);
-        counter++;
+        previousValue = previousValue + el;
     }
-});
+    return previousValue;
+}).length;
 
-alert(counter);
+alert(numberOfVowels);
