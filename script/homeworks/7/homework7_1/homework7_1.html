@@ -230,11 +230,7 @@
         console.log(`${shift}<${element.nodeName}>`);
 
         if (element.hasChildNodes()) {
-            let elements = Array.from(element.children/*childNodes*/);/*prototype.slice.call - аналог Array.from(только для ES-6)*/
-
-            // let filtrArray = elements.filter(function(value) {
-            //     return value.nodeName !== `#text`;
-            // });
+            let elements = Array.from(element.children);
             elements.forEach(function(childElements) {
                 logDomTree(childElements, shift + `  `);
             })
