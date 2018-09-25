@@ -33,18 +33,18 @@ function generateForm(form, value) {
         newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
     });
 
-    value.forEach(function (item) {
+    value.forEach(function (el) {
         // console.log(item);
-        let variants = item['variants'];
+        let variants = el['variants'];
         // console.log(variants);
         for (let key in variants) {
             // console.log(key);
             // console.log(variants[key]);
-            let el = variants[key];
-            for (let keys in el) {
-                let text = el["text"];
+            let getEl = variants[key];
+            for (let keys in getEl) {
+                let text = getEl["text"];
                 // console.log(text);
-                let value = el['value'];
+                let value = getEl['value'];
                 // console.log(value);
                 let select = document.getElementById('4');
                 const newOption= document.createElement("option");
@@ -66,22 +66,8 @@ function generateForm(form, value) {
             }
         }
     });
-
-    let select = document.getElementById('4');
-    select.removeChild(select.lastChild);
-    select.removeChild(select.lastChild);
-    select.removeChild(select.lastChild);
-
-    let radio = document.getElementById('5');
-    radio.removeChild(radio.firstChild);
-    radio.removeChild(radio.firstChild);
-    radio.removeChild(radio.firstChild);
-    radio.removeChild(radio.firstChild);
-    radio.removeChild(radio.firstChild);
-    radio.removeChild(radio.firstChild);
-
-    document.getElementById('6').checked = 'checked';
 }
+
 
 var formDef1=
     [
@@ -109,8 +95,29 @@ var formDef2=
 
 
 generateForm('form',  formDef1);
+generateForm('form',  formDef2);
 
 
+
+
+function correct() {
+    document.getElementById('5').firstChild.checked = 'checked'; /*- можно true*/
+    document.getElementById('6').checked = 'checked'; /*- можно true*/
+
+    let select = document.getElementById('4');
+    select.removeChild(select.lastChild);
+    select.removeChild(select.lastChild);
+    select.removeChild(select.lastChild);
+
+    let radio = document.getElementById('5');
+    radio.removeChild(radio.firstChild);
+    radio.removeChild(radio.firstChild);
+    radio.removeChild(radio.firstChild);
+    radio.removeChild(radio.firstChild);
+    radio.removeChild(radio.firstChild);
+    radio.removeChild(radio.firstChild);
+}
+correct();
 
 
 
