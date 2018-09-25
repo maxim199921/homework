@@ -8,7 +8,7 @@ function generateForm(form, value) {
     document.body.insertBefore(newForm, script);
     let counter = 0;
 
-    value.forEach(function (item) {
+    value.forEach(item => {
         let label = item['label'];
         let kind = item['kind'];
         let name = item['name'];
@@ -33,7 +33,7 @@ function generateForm(form, value) {
         newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
     });
 
-    value.forEach(function (el) {
+    value.forEach( el => {
         // console.log(item);
         let variants = el['variants'];
         // console.log(variants);
@@ -69,7 +69,7 @@ function generateForm(form, value) {
 }
 
 
-var formDef1=
+let formDef1=
     [
         {label:'Название сайта:',kind:'longtext',name:'sitename'},
         {label:'URL сайта:',kind:'longtext',name:'siteurl'},
@@ -84,7 +84,7 @@ var formDef1=
         {label:'Опубликовать:',kind:'submit'}
     ];
 
-var formDef2=
+let formDef2=
     [
         {label:'Фамилия:',kind:'longtext',name:'lastname'},
         {label:'Имя:',kind:'longtext',name:'firstname'},
