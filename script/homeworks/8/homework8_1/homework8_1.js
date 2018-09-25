@@ -99,10 +99,7 @@ generateForm('form',  formDef2);
 
 
 
-
 function correct() {
-    document.getElementById('5').firstChild.checked = 'checked'; /*- можно true*/
-    document.getElementById('6').checked = 'checked'; /*- можно true*/
 
     let select = document.getElementById('4');
     select.removeChild(select.lastChild);
@@ -116,6 +113,10 @@ function correct() {
     radio.removeChild(radio.firstChild);
     radio.removeChild(radio.firstChild);
     radio.removeChild(radio.firstChild);
+
+
+    document.getElementById('5').firstChild.checked = 'checked'; /*- можно true*/
+    document.getElementById('6').checked = 'checked'; /*- можно true*/
 }
 correct();
 
