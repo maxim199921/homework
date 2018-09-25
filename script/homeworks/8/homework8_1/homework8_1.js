@@ -34,18 +34,12 @@ function generateForm(form, value) {
     });
 
     value.forEach( el => {
-        // console.log(item);
         let variants = el['variants'];
-        // console.log(variants);
         for (let key in variants) {
-            // console.log(key);
-            // console.log(variants[key]);
             let getEl = variants[key];
             for (let keys in getEl) {
                 let text = getEl["text"];
-                // console.log(text);
                 let value = getEl['value'];
-                // console.log(value);
                 let select = document.getElementById('4');
                 const newOption= document.createElement("option");
                 const optionText = document.createTextNode(`${text}`);
