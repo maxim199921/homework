@@ -9,40 +9,43 @@ function generateForm(form, value) {
     let counter = 0;
 
     value.forEach(item => {
-        let label = item['label'];
-        let kind = item['kind'];
-        let name = item['name'];
-        let inputChange = 'input';
+        let label = item['label'],
+            kind = item['kind'],
+            name = item['name'],
+            inputChange = 'input';
 
-        if (kind === 'longtext') {
-            kind = 'text';
-            newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
-        }
-        if (kind === 'shorttext') {
-            kind = 'text';
-            newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
-        }
-        if (kind === 'number') {
-            newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
-        }
-        if (kind === 'check') {
-            kind = 'checkbox';
-            newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
-        }
-        if (kind === 'combo') {
-            inputChange = 'select';
-            newForm.innerHTML += createSelect(item, name, label);
-        }
-        if (kind === 'radio') {
-            inputChange = 'span';
-            newForm.innerHTML += createRadio(item, name, label);
-        }
-        if (kind === 'memo') {
-            inputChange = 'textarea';
-            newForm.innerHTML +=`<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
-        }
-        if (kind === 'submit') {
-            newForm.innerHTML +=`<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+        switch (kind) {
+            case kind = 'longtext':
+                kind = 'text';
+                newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+                break;
+            case kind = 'number':
+                newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+                break;
+            case kind = 'shorttext':
+                kind = 'text';
+                newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+                break;
+            case kind = 'check':
+                kind = 'checkbox';
+                newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+                break;
+            case kind = 'combo':
+                inputChange = 'select';
+                newForm.innerHTML += createSelect(item, name, label);
+                break;
+            case kind = 'radio':
+                inputChange = 'span';
+                newForm.innerHTML += createRadio(item, name, label);
+                break;
+            case kind = 'memo':
+                inputChange = 'textarea';
+                newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+                break;
+            case kind = 'submit':
+                newForm.innerHTML += `<br><label></label>${label}<${inputChange} id = "${counter++}" type="${kind}" name="${name}">`;
+                break;
+            default: alert("error");
         }
     });
 
@@ -74,8 +77,8 @@ function generateForm(form, value) {
         return options.join(``);
     }
 
-    document.getElementById('5').firstChild.checked = 'checked'; /*- можно true*/
-    document.getElementById('6').checked = 'checked'; /*- можно true*/
+    document.getElementById('5').firstChild.checked = true;
+    document.getElementById('6').checked = true;
 }
 
 
