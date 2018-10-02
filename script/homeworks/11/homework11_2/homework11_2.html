@@ -32,6 +32,15 @@
     div.addEventListener('mouseup', handleMouseUp);
 
 
+    function event(e) {
+        var target = e.target; // где был клик?
+
+        if (target.tagName !== 'div') return; // не на TD? тогда не интересует
+
+        target.style.zIndex = "110";
+    }
+
+
     var graggableObject = null; // Перемещаемый элемент
     var xy = {}; // Начальные координаты элемента
 
@@ -40,6 +49,7 @@
         div.querySelector(".main1").style.cursor = "pointer";
         div.querySelector(".main2").style.cursor = "pointer";
         graggableObject = e.target; // Сохранить элемент-источник события
+        graggableObject.style.zIndex = "110";
         var s = getComputedStyle(graggableObject);
         xy.top = s.top; // Запомнить его начальную координату Y верхней точки
         xy.left = s.left; // Запомнить его начальную координату X верхней точки
@@ -52,6 +62,7 @@
         div.querySelector(".main").style.cursor = "";
         div.querySelector(".main1").style.cursor = "";
         div.querySelector(".main2").style.cursor = "";
+        graggableObject.style.zIndex = "";
         graggableObject = null; // Очистка
         xy = {};
     }
