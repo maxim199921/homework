@@ -32,15 +32,6 @@
     div.addEventListener('mouseup', handleMouseUp);
 
 
-    function event(e) {
-        var target = e.target; // где был клик?
-
-        if (target.tagName !== 'div') return; // не на TD? тогда не интересует
-
-        target.style.zIndex = "110";
-    }
-
-
     var graggableObject = null; // Перемещаемый элемент
     var xy = {}; // Начальные координаты элемента
 
