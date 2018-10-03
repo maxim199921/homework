@@ -5,10 +5,6 @@ function formatFromCodes(element, formatString) {
         .replace('[EM]', '').replace('[EM]', '').trim();
     let parts = s.split('[B]').filter(x => !!x);
     console.log(parts);
-    // let join = parts.join('');
-    // console.log(join);
-    // let part = join.split('[EM]').filter(x => !!x);
-    // console.log(part);
     let startsFromBoldEm = s.indexOf('[B]') === 0;
     for (let i = 0; i < parts.length; i++) {
         if (i % 2 === 0 && startsFromBoldEm) {
