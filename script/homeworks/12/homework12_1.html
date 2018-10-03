@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <title>x</title>
+    <meta charset="UTF-8">
+</head>
+<body  style="height: 100vh"
+       ondrop="divDrop(event)"
+       ondragover="divDragOver(event)">
+<div class="drop-target" id = "1" style='border: solid red 1px; width: 300px; height: 150px'
+     ondrop="divDrop(event)"
+     ondragover="divDragOver(event)"
+     ondragenter="dragEnter(event)"
+     ondragleave="dragOver(event)">
+</div>
+<br />
+<div class="drop-target" id = "2" style='border: solid blue 1px; width: 300px; height: 150px'
+     ondrop="divDrop(event)"
+     ondragover="divDragOver(event)"
+     ondragenter="dragEntetwo(event)"
+     ondragleave="dragOvertwo(event)">
+</div>
+<br /><br />
+<img draggable="true" id='BALL1' width=50 src="http://fe.it-academy.by/Examples/ball3.png"
+     ondragstart="ballDragStart(event)"
+     ondragend="ballDragEnd(event)">
+<img draggable="true" id='BALL2' width=70 src="http://fe.it-academy.by/Examples/ball3.png"
+     ondragstart="ballDragStart(event)"
+     ondragend="ballDragEnd(event)">
+<img draggable="true" id='BALL3' width=100 src="http://fe.it-academy.by/Examples/ball3.png"
+     ondragstart="ballDragStart(event)"
+     ondragend="ballDragEnd(event)">
+
+<script>
+    "use strict";
+    var draggedBall=null;
+    var a = document.getElementById("1");
+    var b = document.getElementById("2");
+    var ball1 = document.getElementById("BALL1");
+    var ball2 = document.getElementById("BALL2");
+    var ball3 = document.getElementById("BALL3");
+
+
+
+    function dragEnter(e) {
+        a.style.backgroundColor = "red";
+    }
+
+    function dragOver(e) {
+        a.style.backgroundColor = "white";
+    }
+
+    function dragEntetwo(e) {
+        b.style.backgroundColor = "red";
+    }
+
+    function dragOvertwo(e) {
+        b.style.backgroundColor = "white";
+    }
+
+    function ballDragStart(e) {
+        draggedBall = e.target;
+        draggedBall.style.opacity = '0';
+    }
+
+    function ballDragEnd(e) {
+        draggedBall.style.opacity = '1';
+        draggedBall=null;
+        a.style.backgroundColor = "white";
+        b.style.backgroundColor = "white";
+
+    }
+
+    function divDragOver(e) {
+        if (e.target.className === 'drop-target'
+            || e.target === document.body) {
+            e.preventDefault();
+        }
+    }
+
+    function divDrop(e) {
+        e.preventDefault();
+        if (draggedBall) {
+            e.target.appendChild(draggedBall);
+        }
+    }
+
+
+
+</script>
+</body>
+</html>
