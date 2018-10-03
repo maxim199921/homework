@@ -1,10 +1,14 @@
 // Как разобрать строку с форматными символами и построить DOM
 // на ее базе
 function formatFromCodes(element, formatString) {
-    let s = formatString.trim();
-    console.log(s);
+    let s = formatString.replace('[EM]', '').replace('[EM]', '')
+        .replace('[EM]', '').replace('[EM]', '').trim();
     let parts = s.split('[B]').filter(x => !!x);
     console.log(parts);
+    // let join = parts.join('');
+    // console.log(join);
+    // let part = join.split('[EM]').filter(x => !!x);
+    // console.log(part);
     let startsFromBoldEm = s.indexOf('[B]') === 0;
     for (let i = 0; i < parts.length; i++) {
         if (i % 2 === 0 && startsFromBoldEm) {
@@ -25,4 +29,4 @@ function formatFromCodes(element, formatString) {
 
 formatFromCodes(
     document.body,
-    "[B]это жирный текст[B] а это обычный [B], а это опять жирный текст[B], а это курсив, [B]это жирный текст[B] а это обычный [B], а это опять жирный текст[B], а это курсив");
+    "[B]это жирный текст[B] а это обычный [B], а это опять жирный текст[B],[EM] а это курсив [EM], [B]это жирный текст[B] а это обычный [B], а это опять жирный текст[B], [EM] а это курсив [EM]");
