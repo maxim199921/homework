@@ -23,13 +23,16 @@
 <br /><br />
 <img draggable="true" id='BALL1' width=50 src="http://fe.it-academy.by/Examples/ball3.png"
      ondragstart="ballDragStart(event)"
-     ondragend="ballDragEnd(event)">
+     ondragend="ballDragEnd(event)"
+     ondrag="ballDrag(event)">
 <img draggable="true" id='BALL2' width=70 src="http://fe.it-academy.by/Examples/ball3.png"
      ondragstart="ballDragStart(event)"
-     ondragend="ballDragEnd(event)">
+     ondragend="ballDragEnd(event)"
+     ondrag="ballDrag(event)">
 <img draggable="true" id='BALL3' width=100 src="http://fe.it-academy.by/Examples/ball3.png"
      ondragstart="ballDragStart(event)"
-     ondragend="ballDragEnd(event)">
+     ondragend="ballDragEnd(event)"
+     ondrag="ballDrag(event)">
 
 <script>
     "use strict";
@@ -62,6 +65,11 @@
         draggedBall = e.target;
         draggedBall.style.opacity = '0';
     }
+
+    function ballDrag(e) {
+        draggedBall.style.opacity = '0';
+    }
+
 
     function ballDragEnd(e) {
         draggedBall.style.opacity = '1';
