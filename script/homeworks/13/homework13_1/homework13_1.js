@@ -39,9 +39,9 @@ for (let i = 1, n = 0; i < 13 ;i++) {
 //- события на стрелках часов
 
 let date = new Date(); /*Информация о дате*/
-let hour =date.getHours(); /*получение текущего часа*/
-let min = date.getMinutes(); /*получение текущих минут*/
-let sec = date.getSeconds(); /*получение текущих секунд*/
+let hour = 6/*date.getHours()*/; /*получение текущего часа*/
+let min = 59/*date.getMinutes()*/; /*получение текущих минут*/
+let sec = 58/*date.getSeconds()*/; /*получение текущих секунд*/
 let hourElement = document.querySelector(".clock-hour"); /*получение элемента стрелки показания часа в DOM*/
 let minElement = document.querySelector(".clock-minutes"); /*получение элемента стрелки показания минут в DOM*/
 let secElement = document.querySelector(".clock-second"); /*получение элемента стрелки показания секунд в DOM*/
@@ -79,13 +79,13 @@ function moveHour() {
             turnHour = turnHour + 6;
             hourElement.style.transform = `rotate(${turnHour}deg)`;
         }, 720000);
-    },((60 - min) * 60000)/5);
+    },(60 - min) * 1000*60 - ((60-(60 - sec)) * 1000));
 }
 
 function getHalfGradusForHour () {
     let date = new Date();
     let gradus = 0;
-    let min = date.getMinutes();
+    let min = 59/*date.getMinutes()*/;
     if (min >= 1 && min <12) {
         gradus = 0;
         return gradus;
