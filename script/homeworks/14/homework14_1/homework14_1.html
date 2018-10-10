@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type = button value = 'Добавить значение напитка!' onclick="drinkStorage.addValuedrink(prompt('название напитка', ''), prompt('алкогольный?',''), prompt('Рецепт',''))">
+<input type = button value = 'Получить информацию о напитке!' onclick="drinkStorage.getValuedrink(prompt('Введите название напитка', ''))">
+<input type = button value = 'Удаление информации о напитке!' onclick="drinkStorage.deleteValuedrink(prompt('Введите название напитка который вы хотите удалить', ''))">
+<input type = button value = 'Перечень всех напитков!' onclick="drinkStorage.getKeysdrink()"><br><br><hr><br>
+
+<input type = button value = 'Добавить значение блюда!' onclick="dishStorage.addValuedish(prompt('название блюда', ''), prompt('вид блюда(первое,второе)?',''), prompt('Рецепт',''))">
+<input type = button value = 'Получить информацию о блюде!' onclick="dishStorage.getValuedish(prompt('Введите название блюда', ''))">
+<input type = button value = 'Удаление информации о блюде!' onclick="dishStorage.deleteValuedish(prompt('Введите название блюда который вы хотите удалить', ''))">
+<input type = button value = 'Перечень всех блюд!' onclick="dishStorage.getKeysdish()">
+
+<script src="LocalStorage.js"></script>
+</body>
+</html>
