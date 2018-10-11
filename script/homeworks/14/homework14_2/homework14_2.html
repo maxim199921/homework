@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" class="getform" value="пройти анкету"><br>
+<input type="button" class="getvalueform" value="вывести данные в консоль"><br>
+<input type="button" class="clearform" value="очистить данные">
+<script>
+    'use strict';
+
+    function startForm() {
+        let surname;
+        do {
+            surname = prompt("Ваша фамилия?", "")
+        } while (surname === "" || surname === null);
+
+
+        let name1;
+        do {
+            name1 = prompt("Ваше имя?", "")
+        } while (name1 === "" || name1 === null);
+
+
+        let patronymic;
+        do {
+            patronymic = prompt("Ваше отчество?", "")
+        } while (patronymic === "" || patronymic === null);
+
+
+        let age;
+        do {
+            age = prompt("Ваш возраст?", 0);
+        } while (age != +age || age == 0 || age === null);
+
+
+        let ageDays = age * 365;
+
+        let ageAfter = (Number(age) + 20);
+
+        let floorget = confirm("Ваш пол мужской?");
+
+        switch (floorget) {
+            case true:
+                floorget = "мужской";
+                break;
+            case false:
+                floorget = "женский";
+                break;
+        }
+
+        const pension = (age > 60) ? "да" : "нет";
+
+        const form = `Ваше ФИО: ${surname} ${name1} ${patronymic}
+Ваш возраст: ${age} лет
+Ваш возраст в днях: ${ageDays} дней
+Через 20 лет вам будет: ${ageAfter}
+Ваш пол: ${floorget}
+Вы на пенсии: ${pension}`;
+
+        localStorage['fio'] = surname + ' ' + name1 + ' ' + patronymic;
+        localStorage['age'] = age;
+        localStorage['ageDays'] = ageDays;
+        localStorage['ageAfter'] = ageAfter;
+        localStorage['floorget'] = floorget;
+        localStorage['pension'] = pension;
+
+        console.log(form);
+    }
+
+    function viewForm() {
+        if (localStorage['fio']) {
+            console.log(`Ваше ФИО: ${localStorage['fio']}
+Ваш возраст: ${localStorage['age']} лет
+Ваш возраст в днях: ${localStorage['ageDays']} дней
+Через 20 лет вам будет: ${localStorage['ageAfter']}
+Ваш пол: ${localStorage['floorget']}
+Вы на пенсии: ${localStorage['pension']}`);
+        } else {
+            console.log('Данные не сохранены');
+        }
+    }
+
+    function clearLocalstorage() {
+        localStorage.clear();
+    }
+
+
+    let getform = document.querySelector(".getform");
+    getform.addEventListener("click", startForm);
+
+    let getvalueform = document.querySelector(".getvalueform");
+    getvalueform.addEventListener("click", viewForm);
+
+    let clearForm = document.querySelector(".clearform");
+    clearForm.addEventListener("click", clearLocalstorage);
+
+</script>
+</body>
+</html>
+
+
