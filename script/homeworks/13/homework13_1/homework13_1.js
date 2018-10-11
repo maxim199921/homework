@@ -1,89 +1,92 @@
 "use strict";
-// - динамическое добавление элементов на страницу
+ // -динамическое добавление элементов на страницу
+
 let body = document.body;
 
 let divWrapper = document.createElement("div");
 divWrapper.className = 'clock';
-divWrapper.style.background = 'orange';
-divWrapper.style.height = '200px';
-divWrapper.style.width = '200px';
+divWrapper.style.backgroundColor = 'orange';
 divWrapper.style.position = 'relative';
+divWrapper.style.width = '200px';
+divWrapper.style.height = '200px';
 divWrapper.style.borderRadius = '50%';
 body.appendChild(divWrapper);
+
+for (let i = 1, deg = 30; i <= 12; i++, deg+=30) {
+    const num = document.createElement('div');
+    const span = document.createElement('span');
+    const numInner = document.createElement('div');
+    num.className = "num";
+    num.style.position = 'absolute';
+    num.style.top = (200 - 25)/2+'px';
+    num.style.left = (200 - 25)/2+'px';
+    num.style.transformOrigin = '50% 50%';
+    num.style.borderRadius = '50%';
+    num.style.width = '25px';
+    num.style.height = '25px';
+    num.style.backgroundColor = 'green';
+    num.style.transform = 'rotate('+deg+'deg) translateY(-80px)';
+    divWrapper.appendChild(num);
+    num.appendChild(numInner);
+    span.innerText = i;
+    span.style.transform = 'rotate('+-deg+'deg)';
+    span.style.display = 'inline-block';
+    numInner.style.height = '100%';
+    numInner.style.display = 'flex';
+    numInner.style.flexDirection = 'column';
+    numInner.style.justifyContent = 'center';
+    numInner.style.textAlign = 'center';
+    numInner.appendChild(span);
+}
 
 let divTime = document.createElement("div");
 divTime.className = 'time';
 divTime.style.position = 'absolute';
-divTime.style.top = '40px';
-divTime.style.left = '45px';
-divTime.style.fontSize = '30px';
+divTime.style.top = '55px';
+divTime.style.left = '65px';
+divTime.style.fontSize = '20px';
 divWrapper.appendChild(divTime);
 
 let divHour = document.createElement("div");
 divHour.className = 'clock-hour';
-divHour.style.width = '5px';
-divHour.style.height = '50px';
-divHour.style.background = 'black';
-divHour.style.borderRadius = '2px';
 divHour.style.position = 'absolute';
-divHour.style.top = '50px';
-divHour.style.left = '99px';
-divHour.style.zIndex = '3';
-divHour.style.transformOrigin = '0 100%';
+divHour.style.top = (200/2)-50+'px';
+divHour.style.left = (200 - 6)/2+'px';
+divHour.style.transformOrigin = 'bottom right';
+divHour.style.width = '7px';
+divHour.style.height = '50px';
+divHour.style.backgroundColor = 'black';
+divHour.style.borderRadius = '2.5px';
+divHour.style.opacity = '0.8';
 divWrapper.appendChild(divHour);
 
 let divMinutes = document.createElement("div");
 divMinutes.className = 'clock-minutes';
-divMinutes.style.width = '5px';
-divMinutes.style.height = '70px';
-divMinutes.style.background = 'cornflowerblue';
-divMinutes.style.borderRadius = '2px';
 divMinutes.style.position = 'absolute';
-divMinutes.style.top = '30px';
-divMinutes.style.left = '99px';
-divMinutes.style.zIndex = '2';
-divMinutes.style.transformOrigin = '0 100%';
+divMinutes.style.top = (200/2)-77+'px';
+divMinutes.style.left = (200 - 4)/2+'px';
+divMinutes.style.transformOrigin = 'bottom right';
+divMinutes.style.width = '5px';
+divMinutes.style.height = '77px';
+divMinutes.style.backgroundColor = 'black';
+divMinutes.style.borderRadius = '2.5px';
+divMinutes.style.opacity = '0.8';
 divWrapper.appendChild(divMinutes);
 
 let divSecond = document.createElement("div");
 divSecond.className = 'clock-second';
-divSecond.style.width = '2.5px';
-divSecond.style.height = '80px';
-divSecond.style.background = 'red';
-divSecond.style.borderRadius = '2px';
 divSecond.style.position = 'absolute';
-divSecond.style.top = '20px';
-divSecond.style.left = '99px';
-divSecond.style.zIndex = '1';
-divSecond.style.transformOrigin = '0 100%';
+divSecond.style.top = (200/2)-87+'px';
+divSecond.style.left = (200 - 2)/2+'px';
+divSecond.style.transformOrigin = 'bottom right';
+divSecond.style.width = '2px';
+divSecond.style.height = '87px';
+divSecond.style.backgroundColor = 'black';
+divSecond.style.borderRadius = '2.5px';
+divSecond.style.opacity = '0.8';
 divWrapper.appendChild(divSecond);
 
-let ulNumers = document.createElement("ul");
-ulNumers.className = 'clock-numbers';
-ulNumers.style.listStyle = 'none';
-ulNumers.style.transform = 'rotate(23deg)';
-ulNumers.style.top = '-40px';
-ulNumers.style.left = '47px';
-ulNumers.style.position = 'absolute';
-divWrapper.appendChild(ulNumers);
 
-for (let i = 1, n = 0; i < 13; i++) {
-    let liNumbers = document.createElement("li");
-    liNumbers.style.margin = '-10px';
-    liNumbers.style.position = 'absolute';
-    liNumbers.style.textAlign = 'center';
-    liNumbers.style.borderRadius = '50%';
-    liNumbers.style.background = 'greenyellow';
-    liNumbers.style.width = '20px';
-    liNumbers.style.height = '20px';
-    liNumbers.style.left = '108px';
-    liNumbers.style.top = '20px';
-    liNumbers.style.transformOrigin = '0 90px';
-    liNumbers.style.transform = `rotate(${n}deg)`;
-    n = n + 30;
-    liNumbers.innerHTML = `${i}`;
-    ulNumers.appendChild(liNumbers);
-}
 
 
 //- события на стрелках часов
