@@ -1,6 +1,85 @@
 "use strict";
-//- события на стрелках часов
+let body = document.body;
+let script = document.querySelector('.scr');
 
+let clockSvg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+clockSvg.setAttribute('class', 'clock');
+clockSvg.setAttribute('width', '200');
+clockSvg.setAttribute('height', '200');
+body.appendChild(clockSvg);
+body.insertBefore(clockSvg, script);
+
+let backgroundCircle = document.createElementNS('http://www.w3.org/2000/svg',"circle");
+backgroundCircle.setAttribute('r', '100');
+backgroundCircle.setAttribute('cx', '100');
+backgroundCircle.setAttribute('cy', '100');
+backgroundCircle.setAttribute('fill', 'orange');
+clockSvg.appendChild(backgroundCircle);
+
+let backgroundNubmer = document.createElementNS('http://www.w3.org/2000/svg',"circle");
+backgroundNubmer.setAttribute('class', 'circleclock');
+backgroundNubmer.setAttribute('r', '12.5');
+backgroundNubmer.setAttribute('cx', '100');
+backgroundNubmer.setAttribute('cy', '20');
+backgroundNubmer.setAttribute('fill', 'green');
+clockSvg.appendChild(backgroundNubmer);
+
+let textNubmer = document.createElementNS('http://www.w3.org/2000/svg',"text");
+textNubmer.setAttribute('class', 'textclock');
+textNubmer.setAttribute('x', '90');
+textNubmer.setAttribute('y', '25');
+textNubmer.style.fontSize = '20px';
+clockSvg.appendChild(textNubmer);
+
+let text = document.createTextNode('12');
+textNubmer.appendChild(text);
+
+let textClockTime = document.createElementNS('http://www.w3.org/2000/svg',"text");
+textClockTime.setAttribute('class', 'time');
+textClockTime.setAttribute('x', '65');
+textClockTime.setAttribute('y', '70');
+textClockTime.style.fontSize = '20px';
+clockSvg.appendChild(textClockTime);
+
+let textTime = document.createTextNode('00:00:00');
+textClockTime.appendChild(textTime);
+
+let secondLine = document.createElementNS('http://www.w3.org/2000/svg',"line");
+secondLine.setAttribute('class', 'clock-second');
+secondLine.setAttribute('x1', '100');
+secondLine.setAttribute('y1', '100');
+secondLine.setAttribute('x2', '100');
+secondLine.setAttribute('y2', '13');
+secondLine.setAttribute('stroke', 'black');
+secondLine.setAttribute('stroke-width', '2');
+secondLine.setAttribute('fill', 'black');
+clockSvg.appendChild(secondLine);
+
+let minutesLine = document.createElementNS('http://www.w3.org/2000/svg',"line");
+minutesLine.setAttribute('class', 'clock-minutes');
+minutesLine.setAttribute('x1', '100');
+minutesLine.setAttribute('y1', '100');
+minutesLine.setAttribute('x2', '100');
+minutesLine.setAttribute('y2', '23');
+minutesLine.setAttribute('stroke', 'black');
+minutesLine.setAttribute('stroke-width', '5');
+minutesLine.setAttribute('fill', 'black');
+clockSvg.appendChild(minutesLine);
+
+let hourLine = document.createElementNS('http://www.w3.org/2000/svg',"line");
+hourLine.setAttribute('class', 'clock-hour');
+hourLine.setAttribute('x1', '100');
+hourLine.setAttribute('y1', '100');
+hourLine.setAttribute('x2', '100');
+hourLine.setAttribute('y2', '50');
+hourLine.setAttribute('stroke', 'black');
+hourLine.setAttribute('stroke-width', '7');
+hourLine.setAttribute('fill', 'black');
+clockSvg.appendChild(hourLine);
+
+
+
+//- события на стрелках часов
 let date = new Date();
 /*Информация о дате*/
 let hour = date.getHours();
