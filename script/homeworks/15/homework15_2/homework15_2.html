@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameTennis</title>
+</head>
+<body>
+
+
+<script>
+    "use strict";
+    let body = document.body;
+
+    let inputStart = document.createElement("input");
+    inputStart.className = 'startGame';
+    inputStart.setAttribute('type', 'button');
+    inputStart.setAttribute('value', 'start');
+    body.appendChild(inputStart);
+
+    let divWrapper = document.createElement("div");
+    divWrapper.style.textAlign = 'center';
+    divWrapper.style.width = '400px';
+    body.appendChild(divWrapper);
+
+    let spanscoreLeft = document.createElement("span");
+    spanscoreLeft.className = 'scoreLeft';
+    divWrapper.appendChild(spanscoreLeft);
+
+    let textscore = document.createTextNode(':');
+    divWrapper.appendChild(textscore);
+
+    let spanscoreRight = document.createElement("span");
+    spanscoreRight.className = 'scoreRight';
+    divWrapper.appendChild(spanscoreRight);
+
+    let br = document.createElement("br");
+    body.appendChild(br);
+
+    let divWrapperArea = document.createElement("div");
+    divWrapperArea.className = 'area';
+    divWrapperArea.style.width = '400px';
+    divWrapperArea.style.height = '200px';
+    divWrapperArea.style.border = 'solid blue 5px';
+    divWrapperArea.style.position = 'relative';
+    divWrapperArea.style.backgroundColor = 'pink';
+    body.appendChild(divWrapperArea);
+
+    let divMainBall = document.createElement("div");
+    divMainBall.className = 'mainBall';
+    divMainBall.style.width = '15px';
+    divMainBall.style.height = '15px';
+    divMainBall.style.position = 'absolute';
+    divMainBall.style.backgroundColor = 'red';
+    divMainBall.style.borderRadius = '50%';
+    divWrapperArea.appendChild(divMainBall);
+
+    let divracketleft = document.createElement("div");
+    divracketleft.className = 'racketleft';
+    divracketleft.style.width = '10px';
+    divracketleft.style.height = '70px';
+    divracketleft.style.position = 'absolute';
+    divracketleft.style.backgroundColor = 'yellow';
+    divWrapperArea.appendChild(divracketleft);
+
+    let divracketright = document.createElement("div");
+    divracketright.className = 'racketright';
+    divracketright.style.width = '10px';
+    divracketright.style.height = '70px';
+    divracketright.style.position = 'absolute';
+    divracketright.style.backgroundColor = 'yellowgreen';
+    divracketright.style.right = '0';
+    divWrapperArea.appendChild(divracketright);
+
+    let ball = {
+        posX: 185,
+        posY: 90,
+        width: 15,
+        height: 15,
+        speedX: randomNumber(1,3),
+        speedY: randomNumber(1,3),
+        update: function () {
+            const mainBall = document.querySelector('.mainBall');
+            mainBall.style.left = this.posX + "px";
+            mainBall.style.top = this.posY + "px";
+        }
+    },
+    area = {
+        width: 400,
+        height: 200
+    },
+    racketleft = {
+        posY: 10,
+        speedY: 1,
+        width: 10,
+        height: 70,
+        update: function () {
+            const racketLeft = document.querySelector('.racketleft');
+            racketLeft.style.top = this.posY + "px";
+        }
+    },
+    racketright = {
+        posY: 10,
+        speedY: 1,
+        width: 10,
+        height: 70,
+        update: function () {
+            const racketRight = document.querySelector('.racketright');
+            racketRight.style.top = this.posY + "px";
+        }
+    };
+
+    let scoreLeft = document.querySelector('.scoreLeft');
+    scoreLeft.innerText = '0';
+    let scoreRight = document.querySelector('.scoreRight');
+    scoreRight.innerText = '0';
+
+    let leftInterval,
+        rightInterval,
+        pressedLeftInterval = false,
+        pressedRightInterval = false,
+        pressedBall = false;
+
+    document.onkeydown = function(e) {
+        if (e.keyCode === 40) {
+            if (!pressedLeftInterval) {
+                rightInterval = window.setInterval(function() {
+                    if ( !(racketright.posY+racketright.height>area.height) ) {
+                        racketright.posY+=racketright.speedY;
+                    }
+                    if ( racketright.posY+racketright.height>area.height ) {
+                        clearInterval(rightInterval);
+                    }
+                    if ( racketright.posY<0 ) {
+                        racketright.speedY=-racketleft.speedY;
+                        racketright.posY=0;
+                    }
+                    racketright.update();
+                },5);
+            }
+            pressedLeftInterval = true;
+        } else if (e.keyCode === 38) {
+            if (!pressedLeftInterval) {
+                rightInterval = window.setInterval(function () {
+                    if (racketright.posY > 0) {
+                        racketright.posY -= racketright.speedY;
+                    }
+                    if (racketright.posY < 0) {
+                        clearInterval(rightInterval);
+                    }
+                    racketright.update();
+                }, 5)
+            }
+            pressedLeftInterval = true;
+        }
+        if (e.keyCode === 17) {
+            if (!pressedRightInterval) {
+                leftInterval = window.setInterval(function() {
+                    if ( !(racketleft.posY+racketleft.height>area.height) ) {
+                        racketleft.posY+=racketleft.speedY;
+                    }
+                    if ( racketleft.posY+racketleft.height>area.height ) {
+                        clearInterval(leftInterval);
+                    }
+                    if ( racketleft.posY<0 ) {
+                        racketleft.speedY=-racketleft.speedY;
+                        racketleft.posY=0;
+                    }
+                    racketleft.update();
+                },5);
+            }
+            pressedRightInterval = true;
+        } else if (e.keyCode === 16) {
+            if (!pressedRightInterval) {
+                leftInterval = window.setInterval(function () {
+                    if (racketleft.posY > 0) {
+                        racketleft.posY -= racketleft.speedY;
+                    }
+                    if (racketleft.posY < 0) {
+                        clearInterval(leftInterval);
+                    }
+                    racketleft.update();
+                }, 5)
+            }
+            pressedRightInterval = true;
+        }
+    };
+    document.onkeyup = function(e) {
+        if ((e.keyCode === 17)||(e.keyCode === 16)) {
+            clearInterval(leftInterval);
+            pressedRightInterval = false;
+        } else if ((e.keyCode === 40)||(e.keyCode === 38)) {
+            clearInterval(rightInterval);
+            pressedLeftInterval = false;
+        }
+    };
+    let intervalBall;
+    function start() {
+        // плавное движение - от 25 кадр/сек
+        if (!pressedBall) {
+            ball.posX = "185";
+            ball.posY = "90";
+            intervalBall = setInterval(tick, 5);
+        }
+        pressedBall = true;
+    }
+    let startGame = document.querySelector('.startGame');
+    startGame.addEventListener('click', start);
+    function randomNumber(n,m) {
+        return Math.floor(
+            Math.random()*(m-n+1)
+        )+n;
+    }
+    let randomX = randomNumber(0,100),
+        randomY = randomNumber(0,100);
+    function tick() {
+        if (randomX === 1) {
+            ball.posX+=ball.speedX;
+        } else {
+            ball.posX-=ball.speedX;
+        }
+        if (randomY === 1) {
+            ball.posY+=ball.speedY;
+        } else {
+            ball.posY-=ball.speedY;
+        }
+        // вылетел ли мяч правее стены?
+        if ( (ball.posX+ball.width)>(area.width-racketright.width) ) {
+            if ( ball.posX+ball.width>=area.width ) {
+                ball.speedX=-ball.speedX;
+                ball.posX=area.width-ball.width;
+                pressedBall = false;
+                clearInterval(intervalBall);
+                scoreRight.innerHTML = +scoreRight.innerHTML + 1;
+            }
+            if ((ball.posY>racketright.posY) && (ball.posY+ball.height<racketright.posY+racketright.height)) {
+                ball.speedX=-ball.speedX;
+                ball.posX=area.width-racketright.width-ball.width;
+            }
+        }
+
+        // вылетел ли мяч левее стены?
+        if ( ball.posX<racketleft.width ) {
+            if ( ball.posX<0 ) {
+                ball.speedX=-ball.speedX;
+                ball.posX=0;
+                pressedBall = false;
+                clearInterval(intervalBall);
+                scoreLeft.innerHTML = +scoreLeft.innerHTML + 1;
+            }
+            if ((ball.posY>racketleft.posY) && (ball.posY+ball.height<racketleft.posY+racketleft.height)) {
+                ball.speedX=-ball.speedX;
+                ball.posX=racketleft.width;
+            }
+        }
+        // вылетел ли мяч ниже пола?
+        if ( ball.posY+ball.height>area.height ) {
+            ball.speedY=-ball.speedY;
+            ball.posY=area.height-ball.height;
+        }
+        // вылетел ли мяч выше потолка?
+        if ( ball.posY<0 ) {
+            ball.speedY=-ball.speedY;
+            ball.posY=0;
+        }
+        ball.update();
+    }
+    ball.update();
+
+</script>
+</body>
+</html>
