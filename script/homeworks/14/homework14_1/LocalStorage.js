@@ -2,78 +2,94 @@ class TLocalStorage  {
     constructor() {
     }
 
-    addValuedrink(key, value, receipt) {
-        localStorage.setItem(`${key}_`, ` алкогольный: ${value}, \n рецепт приготовления: ${receipt}`);
+    addValue(key, value) {
+        localStorage[key] = value;
     }
 
-    addValuedish(key, value, receipt) {
-        localStorage.setItem(`${key},`, ` вид блюда: ${value}, \n рецепт приготовления: ${receipt}`);
-    }
-
-    getValuedrink(key) {
-        let trueKey = key + "_";
-        let getValue = localStorage[trueKey];
-        if (localStorage[trueKey]) {
-            alert(` название: ${key}, \n${getValue}.`);
-        } else {
-            alert(`такого напитка нет`)
-        }
-    }
-
-    getValuedish(key) {
-        let trueKey = key + ",";
-        let getValue = localStorage[trueKey];
-        if (localStorage[trueKey]) {
-            alert(` название: ${key}, \n${getValue}.`);
+    getValue(key) {
+        let getValue = localStorage[key];
+        if (localStorage[key]) {
+            let trueKey = key.substring(0, key.length - 1);
+            alert(` название: ${trueKey}, \n${getValue}.`);
         } else {
             alert('нет такого блюда');
         }
     }
 
-    deleteValuedrink(key) {
-        let trueKey = key + "_";
-        if (localStorage.getItem(trueKey)){
-            localStorage.removeItem(trueKey);
+    deleteValue(key) {
+        if (localStorage.getItem(key)){
+            localStorage.removeItem(key);
             alert("удаление прошло успешно");
         } else {
             alert("не удалось удалить, попробуйте снова");
         }
     }
 
-    deleteValuedish(key) {
-        let trueKey = key + ",";
-        if (localStorage.getItem(trueKey)){
-            localStorage.removeItem(trueKey);
-            alert("удаление прошло успешно");
-        } else {
-            alert("не удалось удалить, попробуйте снова");
-        }
-    }
-
-    getKeysdrink() {
-        let massiv = [/,/i];
+    getKeys() {
         let keys = Object.keys(localStorage);
-        let result = keys.filter(function (text) {
-            return !massiv.some(function (regex) {
-                return regex.test(text);
-            });
-        });
-        let keyDrink = result.join('').split('_');
-        alert(keyDrink);
-    }
-
-    getKeysdish() {
-        let massiv = [/_/i];
-        let keys = Object.keys(localStorage);
-        let result = keys.filter(function (text) {
-            return !massiv.some(function (regex) {
-                return regex.test(text);
-            });
-        });
-        let keyDish = result.join('');
-        alert(keyDish);
+        alert(keys);
     }
 }
 
-let drinkStorage = new TLocalStorage();
-let dishStorage = new TLocalStorage();
+// -- Для напитков
+
+let drinkLocalStorage = new TLocalStorage();
+
+function enterDrink(key, value, receipt) {
+    key += '_';
+    drinkLocalStorage.addValue(`${key}`, ` алкогольный: ${value}, \n рецепт приготовления: ${receipt}`);
+}
+
+function getDrink(key) {
+    key += '_';
+    drinkLocalStorage.getValue(key);
+}
+
+function deleteDrink(key) {
+    key += '_';
+    drinkLocalStorage.deleteValue(key);
+}
+
+function getAllDrink() {
+    let massiv = [/,/i];
+    let keys = Object.keys(localStorage);
+    let result = keys.filter(function (text) {
+        return !massiv.some(function (regex) {
+            return regex.test(text);
+        });
+    });
+    let keyDrink = result.join('').split('_');
+    alert(keyDrink);
+}
+
+
+//-- для блюд
+let dishLocalStorage = new TLocalStorage();
+
+function enterDish(key, value, receipt) {
+    key += ',';
+    dishLocalStorage.addValue(`${key}`, ` вид блюда: ${value}, \n рецепт приготовления: ${receipt}`);
+}
+
+function getDish(key) {
+    key += ',';
+    dishLocalStorage.getValue(key);
+}
+
+function deleteDish(key) {
+    key += ',';
+    dishLocalStorage.deleteValue(key);
+}
+
+function getAllDish() {
+    let massiv = [/_/i];
+    let keys = Object.keys(localStorage);
+    let result = keys.filter(function (text) {
+        return !massiv.some(function (regex) {
+            return regex.test(text);
+        });
+    });
+    let keyDish = result.join('');
+    alert(keyDish);
+}
+
