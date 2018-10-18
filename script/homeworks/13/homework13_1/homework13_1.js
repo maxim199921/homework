@@ -144,60 +144,15 @@ function moveHour() {
 }
 
 function getFirstStartHour() {
-    let minuts = 0;
-    if (min >= 1 && min < 12) {
-        minuts = 12;
-        return minuts;
-    }
-    if (min >= 12 && min < 24) {
-        minuts = 24;
-        return minuts;
-    }
-    if (min >= 24 && min < 36) {
-        minuts = 36;
-        return minuts;
-    }
-    if (min >= 36 && min < 48) {
-        minuts = 48;
-        return minuts;
-    }
-    if (min >= 48 && min < 60) {
-        minuts = 60;
-        return minuts;
-    }
+    return Math.ceil(min / 6) * 6;
+
 }
 
 function getHalfGradusForHour() {
-    let date = new Date();
-    let gradus = 0;
-    let min = date.getMinutes();
-    if (min >= 1 && min < 12) {
-        gradus = 0;
-        return gradus;
-    }
-    if (min >= 12 && min < 24) {
-        gradus = 6;
-        return gradus;
-    }
-    if (min >= 24 && min < 36) {
-        gradus = 12;
-        return gradus;
-    }
-    if (min >= 36 && min < 48) {
-        gradus = 18;
-        return gradus;
-    }
-    if (min >= 48 && min < 60) {
-        gradus = 24;
-        return gradus;
-    }
-    if (min = 60) {
-        gradus = 30;
-        return gradus;
-    }
+    return Math.floor(min / 12) * 6;
 }
 
-console.log(getHalfGradusForHour());
+
 
 
 moveSec();
