@@ -6,7 +6,6 @@ let clockSvg = document.createElementNS('http://www.w3.org/2000/svg','svg');
 clockSvg.setAttribute('class', 'clock');
 clockSvg.setAttribute('width', '200');
 clockSvg.setAttribute('height', '200');
-body.appendChild(clockSvg);
 body.insertBefore(clockSvg, script);
 
 let backgroundCircle = document.createElementNS('http://www.w3.org/2000/svg',"circle");
@@ -31,18 +30,12 @@ textNubmer.setAttribute('y', '25');
 textNubmer.style.fontSize = '20px';
 clockSvg.appendChild(textNubmer);
 
-let text = document.createTextNode('12');
-textNubmer.appendChild(text);
-
 let textClockTime = document.createElementNS('http://www.w3.org/2000/svg',"text");
 textClockTime.setAttribute('class', 'time');
 textClockTime.setAttribute('x', '65');
 textClockTime.setAttribute('y', '70');
 textClockTime.style.fontSize = '20px';
 clockSvg.appendChild(textClockTime);
-
-let textTime = document.createTextNode('00:00:00');
-textClockTime.appendChild(textTime);
 
 let secondLine = document.createElementNS('http://www.w3.org/2000/svg',"line");
 secondLine.setAttribute('class', 'clock-second');
@@ -138,77 +131,37 @@ function moveHour() {
 }
 
 function getFirstStartHour() {
-    let minuts = 0;
-    if (min >= 1 && min < 12) {
-        minuts = 12;
-        return minuts;
-    }
-    if (min >= 12 && min < 24) {
-        minuts = 24;
-        return minuts;
-    }
-    if (min >= 24 && min < 36) {
-        minuts = 36;
-        return minuts;
-    }
-    if (min >= 36 && min < 48) {
-        minuts = 48;
-        return minuts;
-    }
-    if (min >= 48 && min < 60) {
-        minuts = 60;
-        return minuts;
-    }
+    return Math.ceil(min / 6) * 6;
+
 }
 
 function getHalfGradusForHour() {
-    let date = new Date();
-    let gradus = 0;
-    let min = date.getMinutes();
-    if (min >= 1 && min < 12) {
-        gradus = 0;
-        return gradus;
-    }
-    if (min >= 12 && min < 24) {
-        gradus = 6;
-        return gradus;
-    }
-    if (min >= 24 && min < 36) {
-        gradus = 12;
-        return gradus;
-    }
-    if (min >= 36 && min < 48) {
-        gradus = 18;
-        return gradus;
-    }
-    if (min >= 48 && min < 60) {
-        gradus = 24;
-        return gradus;
-    }
-    if (min = 60) {
-        gradus = 30;
-        return gradus;
-    }
+    return Math.floor(min / 12) * 6;
 }
-
 
 
 let getCircle = document.getElementsByTagName('circle');
 let getText = document.getElementsByTagName('text');
 
 for (let i = 12; i > 0; i--)  {
-    let cloneCircle = getCircle[1].cloneNode(true),
-        cloneText = getText[0].cloneNode(true);
-    cloneCircle.setAttribute('cx',(100 - 80 * Math.sin(i * Math.PI / 6) +  'px'));
-    cloneCircle.setAttribute('cy',(100 - 80 * Math.cos(i * Math.PI / 6) + 'px'));
-    document.getElementsByTagName('svg')[0].
-    insertBefore(cloneCircle, secElement);
-    cloneText.setAttribute('x',(95 + 85 * Math.sin(i * Math.PI / 6) +  'px'));
-    cloneText.setAttribute('y',(105 - 80 * Math.cos(i * Math.PI / 6) + 'px'));
-    cloneText.textContent = i;
-    document.getElementsByTagName('svg')[0].
-    appendChild(cloneText);
+        let cloneCircle = getCircle[1].cloneNode(true),
+            cloneText = getText[1].cloneNode(true);
+        cloneCircle.setAttribute('cx', (100 - 80 * Math.sin(i * Math.PI / 6) + 'px'));
+        cloneCircle.setAttribute('cy', (100 - 80 * Math.cos(i * Math.PI / 6) + 'px'));
+        document.getElementsByTagName('svg')[0].insertBefore(cloneCircle, secElement);
+        if (i > 9) {
+            cloneText.setAttribute('x',(95 + 87 * Math.sin(i * Math.PI / 6) +  'px'));
+        }
+        if (i < 10) {
+            cloneText.setAttribute('x', (95 + 80 * Math.sin(i * Math.PI / 6) + 'px'));
+        }
+        cloneText.setAttribute('y', (105 - 80 * Math.cos(i * Math.PI / 6) + 'px'));
+        cloneText.setAttribute('id', i);
+        cloneText.textContent = i;
+        document.getElementsByTagName('svg')[0].appendChild(cloneText);
 }
+document.getElementById('12').setAttribute('x', '90');
+
 
 moveSec();
 moveMin();
@@ -234,7 +187,6 @@ function timeWithNull(val, len) {
 
 
 setInterval(updateTime, 1000);
-
 
 
 
