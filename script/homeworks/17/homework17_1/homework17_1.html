@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clock</title>
+</head>
+<body>
+    <script src="TClock.js"></script>
+    <script src="TClockViewDOM.js"></script>
+    <script src="TClockViewSVG.js"></script>
+    <script src="TClockControllerButtons.js"></script>
+
+    <script>
+
+        const model1 = new TClock();
+        const view1 = new TClockViewDOM(document.body);
+        new TClockControllerButtons(model1, view1, 'NewYork');
+
+        const model2 = new TClock();
+        const view2 = new TClockViewDOM(document.body);
+        new TClockControllerButtons(model2, view2, 'London');
+
+        const model3 = new TClock();
+        const view3 = new TClockViewDOM(document.body);
+        new TClockControllerButtons(model3, view3, 'Berlin');
+
+        const model4 = new TClock();
+        const view4 = new TClockViewSVG(document.body);
+        new TClockControllerButtons(model4, view4, 'Minsk');
+
+        const model5 = new TClock();
+        const view5 = new TClockViewSVG(document.body);
+        new TClockControllerButtons(model5, view5, 'Tokyo');
+
+        const model6 = new TClock();
+        const view6 = new TClockViewSVG(document.body);
+        new TClockControllerButtons(model6, view6, 'Vladivostok');
+
+    </script>
+</body>
+</html>
