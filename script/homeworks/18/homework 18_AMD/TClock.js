@@ -1,0 +1,25 @@
+define(function() {
+    class TClock {
+        constructor(timezone) {
+            this.timezone = timezone;
+            this.changeListener = null;
+            // модель предоставляет поле date для чтения извне
+            this.date = new Date();
+            // модель обновляет себя
+            setInterval(() => {
+                this.date = new Date();
+                if (typeof (this.changeListenerCallback) === 'function') {
+                    // и нотифицирует слушателя путем вызова
+                    // его функции обратного вызова
+                    this.changeListenerCallback();
+                }
+            }, 1000);
+        }
+
+        setChangeListener(changeListener) {
+            this.changeListenerCallback = changeListener;
+        }
+    }
+
+    return {Model:TClock};
+});
