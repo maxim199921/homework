@@ -6,6 +6,14 @@ class TClockViewCANVAS {
         this.sec = null;
         this.context = null;
         this.startedChangeHandler = null;
+        this.timezoneHash = {
+            Minsk: {name: 'Минск', UTC: '+3'},
+            NewYork: {name: 'Нью - Йорк', UTC: '-5'},
+            London: {name: 'Лондон', UTC: ' '},
+            Berlin: {name: 'Берлин', UTC: '+1'},
+            Tokyo: {name: 'Токио', UTC: '+9'},
+            Vladivostok: {name: 'Владивосток', UTC: '+10'},
+        };
     }
 
     static clock(element, hour, min, sec, date) {
@@ -30,7 +38,7 @@ class TClockViewCANVAS {
         element.lineCap = 'round';
         element.beginPath();
         element.moveTo(100,100);
-        element.lineTo(100+hour.height*Math.sin((30*(date.getHours()%12) + date.getMinutes()/2) * Math.PI/180),100-hour.height*Math.cos((30*(date.getHours()%12) + date.getMinutes()/2) * Math.PI/180));
+        element.lineTo(100+hour.height*Math.sin((30*(10+date.getHours()%12) + date.getMinutes()/2) * Math.PI/180),100-hour.height*Math.cos((30*(10+date.getHours()%12) + date.getMinutes()/2) * Math.PI/180));
         element.stroke();
 
         element.strokeStyle = min.color;
@@ -50,10 +58,17 @@ class TClockViewCANVAS {
         element.stroke();
     }
 
-    render(model) {
+    render(model, timezone) {
         // представление создает dom элементы в первый раз
         if (!this.canvas) {
             this.divOuter = document.createElement('div');
+
+            this.timeUTC = document.createElement("span");
+            this.divOuter.style.marginRight = '200px';
+            this.divOuter.style.marginTop = '50px';
+            this.timeUTC.textContent = `(${this.timezoneHash[timezone].name} GMT ${this.timezoneHash[timezone].UTC})`;
+            this.divOuter.appendChild(this.timeUTC);
+
             this.divInner = document.createElement('div');
             this.divOuter.style.display = 'inline-block';
             this.divInner.style.display = 'inline-block';
