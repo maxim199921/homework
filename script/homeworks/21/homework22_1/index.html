@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>homework22</title>
+    <script src='http://fe.it-academy.by/JQ/jquery.js'></script>
+</head>
+<body>
+
+    <div id='IPage'>
+    </div>
+
+    <script>
+
+        "use strict";
+
+        window.onhashchange = switchToStateFromURLHash;
+
+        let SPAState={}, // могут быть элементы pagename
+            contentArrayJson,
+            content;
+
+        function switchToStateFromURLHash() {
+            let URLHash = window.location.hash;
+
+            let stateJSON = decodeURIComponent(URLHash.substr(1));
+
+            if ( stateJSON != "" )
+                SPAState = JSON.parse(stateJSON); // если JSON непустой, читаем из него состояние и отображаем
+            else
+                SPAState = {pagename:'Enciclo'}; // иначе показываем главную страницу
+
+            console.log('Новое состояние приложения:');
+            console.log(SPAState);
+
+            let pageHTML = "";
+            switch ( SPAState.pagename ) {
+                case 'Enciclo':
+                    pageHTML += "<b>Энциклопедия</b>";
+                    pageHTML += "<br/>";
+                    pageHTML += "<a href='#' title='перейти к оглавлению' onclick='switchToContentPage(event)'>Оглавление</a>";
+                    break;
+                case 'Content':
+                    let array = [],
+                        object = {};
+                    if (contentArrayJson === undefined) contentArrayJson = JSON.parse(localStorage['json']);
+                    contentArrayJson.forEach((json) => {
+                        let char = json.title[0];
+                        if (char in object) {
+                            object[char] = object[char] + `<a href='${json.link}' title='перейти к ${json.title}'
+                                            onclick="switchToPageWithContent(event)">${json.title}</a>
+                                <br/>`;
+                        } else {
+                            array.push(char);
+                            object[char] = `<a href='${json.link}' title='перейти к ${json.title}'
+                                            onclick="switchToPageWithContent(event)">${json.title}</a>
+                                <br/>`;
+                        }
+                    });
+                    array.sort();
+                    pageHTML = '<ul>';
+                    for (let i = 0; i < array.length; i++){
+                        pageHTML += `<li>
+                                        <p>${array[i]}</p>${object[array[i]]}
+                                     </li>`;
+                    }
+                    pageHTML += '</ul>';
+                    break;
+                default:
+                    if (contentArrayJson === undefined) {
+                        contentArrayJson = JSON.parse(localStorage['json']);
+                        content = JSON.parse(localStorage['content']);
+                    }
+                    pageHTML = '<ul style="position: absolute;">';
+                    contentArrayJson.forEach((json) => {
+                        pageHTML += `<li><a href='${json.link}'
+                     onclick="switchToPageWithContent(event)">${json.title}</a></li>`;
+                    });
+                    pageHTML += '</ul>';
+                    pageHTML += `<div style="position: absolute; left: 300px;">${content}</div>`;
+                    break;
+            }
+            document.getElementById('IPage').innerHTML = pageHTML;
+        }
+
+        function switchToState(newState) {
+            location.hash = encodeURIComponent(JSON.stringify(newState));
+        }
+
+        function promise(url) {
+            return new Promise((resolve, reject) => {
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    cache: false,
+                    success: resolve,
+                    error: reject,
+                });
+            });
+        }
+
+        function switchToContentPage(e) {
+            e.preventDefault();
+            promise('titleContent.json').then((value) => {
+                contentArrayJson = value;
+                localStorage['json'] = JSON.stringify(contentArrayJson);
+                switchToState({pagename: 'Content'});
+            });
+        }
+
+        function switchToPageWithContent(e) {
+            e.preventDefault();
+            let EO = e.target;
+            promise(EO.href + '.html').then((value) => {
+                content = value;
+                localStorage['content'] = JSON.stringify(content);
+                switchToState({pagename: EO.href});
+            });
+        }
+
+        switchToStateFromURLHash();
+
+    </script>
+
+</body>
+</html>
