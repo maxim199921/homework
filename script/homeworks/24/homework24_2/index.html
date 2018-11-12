@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>*** unnamed text ***</title>
+    <script src="http://fe.it-academy.by/JQ/jquery.js"></script>
+</head>
+<body>
+<style>
+    table.CHESS {
+        border-collapse: collapse;
+    }
+    table.CHESS td {
+        width: 50px;
+        height: 50px;
+        border: solid gray 1px;
+    }
+    .black {
+        background-color: black;
+    }
+    table.CHESS .chess_header {
+        background-color: #d9d9d9;
+        width: 25px;
+        height: 25px;
+    }
+
+</style>
+
+
+<script>
+
+        'use strict';
+
+
+        function getBoard() {
+            let sizeBoard = 8;
+            let board = $('<table class="CHESS"></table>');
+            let headerAndFooter = $('<tr></tr>');
+            for (let i = 0; i < 10; i++) {
+                headerAndFooter.append('<td class="chess_header">'  + '</td>');
+            }
+            for (var i = 0; i < sizeBoard; i++) {
+                board.append('<tr></tr>');
+                for (var j = 0; j < sizeBoard + 2; j++) {
+                    board.find('tr:last').append('<td></td>');
+                }
+            }
+            board.append(headerAndFooter);
+            board.prepend(headerAndFooter.clone());
+            board.find('tr').each(function(rowNum) {
+                if (rowNum !== 0 && rowNum !== 9) {
+                    $(this).children('td').each(function(colNum) {
+                        if (colNum === 0 || colNum === 9) {
+                            $(this).addClass('chess_header');
+                        } else {
+                            // Ячейка внутри шахматной доски.
+                            // Вычисляем её положение по чётности строки/столбца и окрашиваем
+                            if ((rowNum % 2 === 0 && colNum % 2 === 0) || (rowNum % 2 !== 0 && colNum % 2 !== 0)) {
+                                $(this).addClass('black');
+                            }
+                        }
+                    });
+                }
+            });
+            return board;
+        }
+        $('body').append(getBoard());
+
+</script>
+</body>
+</html>
