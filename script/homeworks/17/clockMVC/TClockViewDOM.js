@@ -11,7 +11,6 @@ class TClockViewDOM {
             Berlin: {name: 'Берлин', UTC: '+1'},
             Tokyo: {name: 'Токио', UTC: '+9'},
             Vladivostok: {name: 'Владивосток', UTC: '+10'},
-
         };
     }
 
