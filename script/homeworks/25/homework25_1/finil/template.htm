@@ -1,0 +1,9 @@
+{{each items}}
+        <div>
+            <img src='${src}' alt='${name}' title='${name}'>
+            <div class='name'>Название: <span>${name}</span></div>
+            <div class='years'>Год выхода: <span>${years}</span></div>
+            {{if $value.number !== undefined }}<div class='place'>RollingStone: <span>${number}</span></div>{{/if}}
+        </div>
+{{/each}}
+<br>Примечание: <span class='SPlace'>RollingStone</span> &mdash; позиция альбома в списке 500 величайших альбомов всех времён по версии журнала Rolling Stone.

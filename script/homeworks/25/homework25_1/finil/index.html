@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Beatles</title>
+    <style>
+        .name { color: blue;}
+        .years { color: green }
+        .place { color: red }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js"></script>
+    <script id='err' type='text/x-jquery-tmpl'>
+        <div>${message}</div>
+    </script>
+</head>
+<body>
+<script>
+    $.ajax({
+        type: 'get',
+        url: 'template.htm',
+        cache: true,
+        success: (template) => {
+            fetch("date.json")
+                .then(items => {
+                    if (items.ok)
+                        return items.json();
+                    else {
+                        throw new Error(items.status + " " + items.statusText);
+                    }
+                })
+                .then(items => $.tmpl(template, {items: items}).appendTo('body'))
+                .catch(e => $('#err').tmpl(el).appendTo('body'));
+        }
+    });
+</script>
+</body>
+</html>

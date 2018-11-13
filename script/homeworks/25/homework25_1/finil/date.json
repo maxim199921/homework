@@ -1,0 +1,70 @@
+[
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Please_Please_Me.jpg",
+    "name": "lease Please Me",
+    "years": 1963,
+    "number": 39
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/With_the_Beatles.jpg",
+    "name": "With The Beatles",
+    "years": 1963,
+    "number": 59
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/A_Hard_Day&apos;s_Night.jpg",
+    "name": "A Hard Day' Night",
+    "years": 64,
+    "number": 307
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Beatles_for_Sale.jpeg",
+    "name": "Beatles for Sale",
+    "years": 1964
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Help!.jpg",
+    "name": "Help!",
+    "years": 1965,
+    "number": 331
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Rubber_Soul.jpg",
+    "name": "Rubber Soul",
+    "years": 1965,
+    "number": 5
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Revolver.jpg",
+    "name": "Revolver",
+    "years": 1966
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Sgt._Pepper&apos;s_Lonely_Hearts_Club_Band.jpg",
+    "name": "Sgt. Pepper' Lonely Hearts Club Band",
+    "years": 1967,
+    "number": 1
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Magical_Mystery_Tour.jpg",
+    "name": "Magical Mystery Tour",
+    "years": 1967
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/The_White_Album.png",
+    "name": "The Beatles (White Album)",
+    "years": 1968,
+    "number": 10
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Yellow_Submarine.jpg",
+    "name": "Yellow Submarine",
+    "number": 1969
+  },
+  {
+    "src": "http://fe.it-academy.by/Examples/Beatles/Abbey_Road.jpg",
+    "name": "Abbey Road",
+    "years": 1969,
+    "number": 14
+  }
+]
