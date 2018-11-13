@@ -53,8 +53,6 @@
                         if (colNum === 0 || colNum === 9) {
                             $(this).addClass('chess_header');
                         } else {
-                            // Ячейка внутри шахматной доски.
-                            // Вычисляем её положение по чётности строки/столбца и окрашиваем
                             if ((rowNum % 2 === 0 && colNum % 2 === 0) || (rowNum % 2 !== 0 && colNum % 2 !== 0)) {
                                 $(this).addClass('black');
                             }
