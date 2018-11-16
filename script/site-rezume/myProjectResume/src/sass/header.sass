@@ -1,0 +1,45 @@
+.demo-layout-transparent
+  color: white
+  background-position: center center
+  background-size: cover
+  background-repeat: no-repeat
+  background-image: url("../img/authbackground2-min.png")
+  background-color: #000000
+
+.mdl-layout__drawer
+  color: #ffffff !important
+  background-size: cover !important
+  background-repeat: no-repeat !important
+  background-image: url("../img/authbackground2-min.png") !important
+  .mdl-navigation__link__text
+    color: #ffffff !important
+
+.mdl-navigation__link:hover
+  background-color: #000000
+  opacity: 0.6
+
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button
+  color: #ffffff !important
+
+.mdl-navigation__text
+  color: #ffffff !important
+
+@media (min-width: 600px) and (max-width: 1050px)
+  .mdl-layout__header
+    display: block !important
+  .mdl-navigation__text
+    font-size: 16px !important
+  .mdl-layout-title-text
+    font-size: 16px !important
+
+@media (min-width: 50px) and (max-width: 599px)
+  .mdl-layout__header
+    display: block !important
+  .mdl-navigation__text
+    font-size: 10px !important
+    line-height: 12px !important
+  .mdl-layout-title-text
+    font-size: 10px !important
+    line-height: 12px !important
+

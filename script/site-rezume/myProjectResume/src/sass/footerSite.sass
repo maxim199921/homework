@@ -1,0 +1,123 @@
+.page-footer
+  background: transparent
+
+.page-footer__wrapper
+  width: 260px
+  margin: 0 auto
+  padding: 0
+
+.page-footer__social
+  display: block
+  text-align: center
+  min-height: 25px
+  list-style: none
+  margin: 0
+  position: relative
+  .page-footer__link--instagram
+    content: ""
+    position: absolute
+    left: 70px
+    width: 25px
+    height: 25px
+    background-image: url("../img/instamain.png")
+    background-size: 100%
+    background-repeat: no-repeat
+    &:hover
+      opacity: 0.8
+    &:focus, &:active
+      opacity: 0.3
+  .page-footer__link--facebook
+    content: ""
+    position: absolute
+    width: 25px
+    height: 25px
+    left: 115px
+    background-image: url("../img/facebookmain.png")
+    background-size: 100%
+    background-repeat: no-repeat
+    &:hover
+      opacity: 0.8
+    &:focus, &:active
+      opacity: 0.3
+  .page-footer__link--twitter
+    content: ""
+    position: absolute
+    left: 160px
+    width: 25px
+    height: 25px
+    background-image: url("../img/twittermain.png")
+    background-size: 100%
+    background-repeat: no-repeat
+    &:hover
+      opacity: 0.8
+    &:focus, &:active
+      opacity: 0.3
+
+.page-footer__text
+  display: block
+  font-family: 'open_sansbold', Arial, sans-serif
+  font-size: 14px
+  line-height: 15px
+  font-weight: bold
+  text-align: center
+  padding: 5px 0
+  color: white
+  font-style: italic
+  cursor: default
+
+.page-footer__text:hover
+  opacity: 0.3
+
+@media (min-width: 670px)
+  .page-footer__wrapper
+    width: 670px
+    margin: 0 auto
+    display: flex
+    justify-content: space-between
+  .page-footer__logo
+    background-image: url("../img/logo1.png")
+    background-size: 100%
+    background-repeat: no-repeat
+    width: 120px
+    min-height: 75px
+  .page-footer__social
+    display: flex
+    width: 270px
+    min-height: 0
+    .page-footer__link--instagram
+      top: 15px
+      left: 110px
+      width: 40px
+      height: 40px
+    .page-footer__link--facebook
+      top: 15px
+      left: 170px
+      width: 40px
+      height: 40px
+    .page-footer__link--twitter
+      top: 15px
+      left: 230px
+      width: 40px
+      height: 40px
+  .page-footer__text
+    width: 200px
+    font-size: 20px
+    line-height: 30px
+    padding-top: 5px
+
+@media (min-width: 1050px)
+  .page-footer__wrapper
+    width: 1050px
+    margin: 0 auto
+  .page-footer__logo
+    margin-right: 80px
+  .page-footer__social
+    width: 650px
+    .page-footer__link--instagram
+      left: 245px
+    .page-footer__link--facebook
+      left: 305px
+    .page-footer__link--twitter
+      left: 365px
+
+

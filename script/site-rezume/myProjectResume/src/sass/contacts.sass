@@ -1,0 +1,125 @@
+.main-contacts__content
+  margin-top: 5% !important
+
+.main-contacts__info-item
+  display: inline-block
+  width: 20%
+
+.main-contacts__iframe-foto__wrapper
+  width: 100%
+  cursor: pointer
+  border: 2px solid #000000 !important
+  box-shadow: 0 20px 200px rgba(123,123,32,0.9)
+
+.main-contacts__info
+  font-family: 'open_sansbold', Arial, sans-serif
+  font-size: 20px
+  line-height: 30px
+
+.main-contacts__popap
+  margin-left: 25% !important
+
+@media (min-width: 1100px) and (max-width: 1250px)
+  .main-contacts__info
+    font-size: 18px
+    line-height: 22px
+
+@media (min-width: 940px) and (max-width: 1099px)
+  .main-contacts__info
+    font-size: 15px
+    line-height: 18px
+
+@media (min-width: 840px) and (max-width: 939px)
+  .main-contacts__info
+    font-size: 13px
+    line-height: 14px
+
+@media (min-width: 600px) and (max-width: 839px)
+  .main-contacts__info
+    font-size: 13px
+    line-height: 14px
+    text-align: center
+  .main-contacts__popap
+    margin-left: 20% !important
+    margin-right: 20% !important
+    margin-bottom: 5% !important
+  .main-contacts__content
+    margin-top: 0 !important
+
+@media (min-width: 420px) and (max-width: 599px)
+  .main-contacts__info
+    font-size: 13px
+    line-height: 14px
+    text-align: center
+  .main-contacts__popap
+    margin-left: 20% !important
+    margin-right: 20% !important
+    margin-bottom: 15% !important
+  .main-contacts__content
+    margin-top: 10% !important
+
+@media (min-width: 0px) and (max-width: 419px)
+  .main-contacts__info
+    font-size: 13px
+    line-height: 14px
+    text-align: center
+  .main-contacts__popap
+    margin-left: 20% !important
+    margin-right: 20% !important
+    margin-bottom: 20% !important
+  .main-contacts__content
+    margin-top: 15% !important
+
+.modal
+  position: fixed
+  display: none
+  color: #000000
+  background-color: #ffffff
+  background-position: 0 0
+  box-shadow: 0 20px 200px rgba(123,123,32,0.9)
+  z-index: 1000
+
+.modal-map
+  display: none
+  width: 80%
+  min-height: 550px
+  top: 70px
+  left: 10%
+  z-index: 1000
+
+.modal-close
+  position: absolute
+  content: ""
+  top: 22px
+  left: 93%
+  width: 55px
+  height: 55px
+  border: none
+  font-size: 0
+  border-radius: 50%
+  background-color: #62d1ba
+  cursor: pointer
+
+.modal-close::before,
+.modal-close::after
+  position: absolute
+  content: ""
+  left: 13px
+  width: 30px
+  height: 2px
+  background-color: #ffffff
+
+.modal-close::before
+  transform: rotate(45deg)
+
+.modal-close::after
+  transform: rotate(-45deg)
+
+.modal-map__show
+  display: block
+
+.main-contacts__info__hr
+  text-decoration: underline
+  color: #a7ffeb
+  font-weight: bold
+
