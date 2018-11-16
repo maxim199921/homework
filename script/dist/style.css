@@ -103,6 +103,10 @@ input[type="checkbox"].visually-hidden, input[type="radio"].visually-hidden {
     font-size: 10px !important;
     line-height: 12px !important; } }
 
+.container {
+  max-width: 960px;
+  margin: 0 auto; }
+
 .mdl-grid__texth1 {
   font-family: 'open_sansbold', Arial, sans-serif;
   font-size: 30px;
@@ -114,28 +118,54 @@ input[type="checkbox"].visually-hidden, input[type="radio"].visually-hidden {
   position: relative; }
 
 #myFoto {
-  position: absolute;
-  z-index: 1000; }
+  top: 90%;
+  left: 43%;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%; }
 
 #myFoto1 {
-  position: absolute;
-  z-index: 1000; }
+  left: 23%;
+  -webkit-transform-origin: 60% 50%;
+          transform-origin: 60% 50%;
+  height: 100%; }
 
 #myFoto2 {
-  position: absolute;
-  z-index: 1000; }
+  left: 57%;
+  top: 67%; }
 
 .main-me__slider-foto__wrapper {
   position: relative;
-  margin-left: 38%;
-  margin-right: 24%;
+  overflow: hidden;
   height: 333px;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
   cursor: pointer;
   border: 2px solid #000000 !important;
   box-shadow: 0 20px 200px rgba(123, 123, 32, 0.9); }
+  .main-me__slider-foto__wrapper:hover img {
+    -webkit-transform: translate(-50%, -50%) scale(1.2);
+            transform: translate(-50%, -50%) scale(1.2); }
+  .main-me__slider-foto__wrapper img {
+    transition: all .3s ease;
+    max-width: none;
+    height: auto;
+    width: auto;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%; }
 
 .main-me__slider-foto-togle {
-  margin-left: 51%; }
+  max-width: 250px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center; }
 
 @media (min-width: 841px) and (max-width: 1100px) {
   .mdl-data-table tr,
@@ -144,44 +174,27 @@ input[type="checkbox"].visually-hidden, input[type="radio"].visually-hidden {
 
 @media (min-width: 600px) and (max-width: 840px) {
   .main-me__slider-foto__wrapper {
-    margin-left: 31%;
-    margin-right: 31%;
     height: 300px; }
-  .main-me__slider-foto-togle {
-    margin-left: 45%; }
-  .mdl-data-table {
-    margin-left: 25% !important;
-    margin-right: 25% !important; }
-    .mdl-data-table tr,
-    .mdl-data-table td {
-      font-size: 12px !important;
-      white-space: normal !important; }
-  .mdl-js-data-table-item {
-    width: 40% !important; } }
+  .mdl-data-table tr,
+  .mdl-data-table td {
+    font-size: 12px !important;
+    white-space: normal !important; } }
 
 @media (min-width: 0px) and (max-width: 599px) {
-  .main-me__slider-foto__wrapper {
-    margin-left: 31%;
-    margin-right: 31%;
-    height: 200px; }
-  .main-me__slider-foto-togle {
-    margin-left: 41%; }
-  .mdl-data-table {
-    margin-left: 15% !important;
-    margin-right: 15% !important; }
-    .mdl-data-table tr,
-    .mdl-data-table td {
-      font-size: 12px !important;
-      white-space: normal !important; }
-  .mdl-js-data-table-item {
-    width: 40% !important; } }
+  .mdl-data-table tr,
+  .mdl-data-table td {
+    font-size: 12px !important;
+    white-space: normal !important; } }
+
+.mdl-layout__content {
+  overflow-y: initial !important;
+  overflow-x: initial !important; }
 
 .mdl-data-table {
   font-family: 'open_sansbold', Arial, sans-serif;
   background: transparent !important;
-  margin-left: 10%;
-  margin-right: 30%;
-  min-height: 333px; }
+  min-height: 333px;
+  width: 100%; }
   .mdl-data-table tr,
   .mdl-data-table td {
     border-top: 0.1px solid #ffffff !important;
@@ -194,12 +207,19 @@ input[type="checkbox"].visually-hidden, input[type="radio"].visually-hidden {
 .mdl-js-data-table-item {
   width: 20%; }
 
+.main-me__info {
+  padding-left: 40px; }
+
 .main-me__info-h3 {
   text-align: center; }
 
 .main-me__info-my {
   text-align: center;
   margin-top: 20%; }
+
+@media (max-width: 840px) {
+  .main-me__info {
+    padding-left: 0; } }
 
 .main-skills_text {
   font-family: 'open_sansbold', Arial, sans-serif;
